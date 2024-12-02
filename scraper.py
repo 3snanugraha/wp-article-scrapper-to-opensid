@@ -34,9 +34,8 @@ def generate_sql(xml_file):
     root = tree.getroot()
     
     sql_statements = []
-    sql_template = """INSERT INTO artikel 
-        (judul, slug, isi, enabled, tgl_upload, gambar, id_kategori, id_user, hit, config_id) 
-        VALUES ('{title}', '{slug}', '{content}', 1, '{date}', '{image}', 1, 1, {hit}, 1);"""
+    sql_template = """INSERT INTO `artikel` (`id`, `config_id`, `gambar`, `isi`, `enabled`, `tgl_upload`, `id_kategori`, `id_user`, `judul`, `headline`, `gambar1`, `gambar2`, `gambar3`, `dokumen`, `link_dokumen`, `boleh_komentar`, `slug`, `hit`, `tampilan`, `slider`, `tipe`) VALUES
+    (NULL, 1, '{image}', '{content}', 1, '{date}', 1, 1, '{title}', 0, NULL, NULL, NULL, NULL, NULL, 1, '{slug}', {hit}, 1, 0, 'dinamis');"""
 
     for item in root.findall('.//item'):
         title = clean_html_content(item.find('title').text)
@@ -59,7 +58,7 @@ def generate_sql(xml_file):
     return '\n'.join(sql_statements)
 
 # Usage
-xml_file = 'desapanjalu.WordPress.2024-12-02.xml'
+xml_file = 'c:\\Users\\user\\Downloads\\desapanjalu.WordPress.2024-12-02.xml'
 output_file = 'artikel_import.sql'
 
 with open(output_file, 'w', encoding='utf-8') as f:
