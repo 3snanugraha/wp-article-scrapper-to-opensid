@@ -58,7 +58,7 @@ def generate_sql(xml_file):
     return '\n'.join(sql_statements)
 
 # Usage
-xml_file = 'c:\\Users\\user\\Downloads\\desapanjalu.WordPress.2024-12-02.xml'
+xml_file = 'desapanjalu.WordPress.2024-12-02.xml'
 output_file = 'artikel_import.sql'
 
 with open(output_file, 'w', encoding='utf-8') as f:
